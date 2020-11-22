@@ -9,7 +9,22 @@ function BlockGenerator() {
     const body = $('body')
 	body.append(this.block)
     this.elements = [];
-    this.timing = 1;
+    this.timing = 2;
+    this.start = function() {
+        let next = 0;
+        setInterval(() => {
+            if (next >= this.elements.length) {
+                next = 0;
+                this.block.style.backgroundImage = `url(${this.elements[next].src})`;
+                this.block.style.backgroundSize = "cover";
+                next++;
+            } else {
+                this.block.style.backgroundImage = `url(${this.elements[next].src})`;
+                this.block.style.backgroundSize = "cover";
+                next++;
+            }
+        }, this.timing * 1000);
+    }
 }
 
 BlockGenerator.prototype = {
@@ -19,26 +34,8 @@ BlockGenerator.prototype = {
     },
 
     addElement: function(ele) {
-
         this.elements.push(ele);
-        this.block.style.backgroundImage = `url(${this.elements[0].src})`;
-        this.block.style.backgroundSize = "cover";
         log(this.elements)
     }
 
-	// addElement: function() {
-	// 	const element = document.createElement('div')
-	// 	element.style = 'width: 60px; height: 60px; border-radius: 50%; margin: 10px; background-color: Aqua;'
-		
-	// 	const body = $('body') // jQuery equivalent to: const body = document.querySelector('body')
-	// 	body.append(circle)
-		
-	// 	this.block.push(circle) // add to the circles list
-	// },
-
-	// changeCirclesColor: function() {
-	// 	for (let i = 0; i < this.circles.length; i++) {
-	// 		this.block[i].style.backgroundColor = 'darkmagenta'
-	// 	}
-	// }
 }
