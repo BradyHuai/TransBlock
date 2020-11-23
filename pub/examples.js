@@ -16,7 +16,7 @@ img3.src = "../assets/img3.png";
 img3.alt = "";
 
 const bg = new BlockGenerator()
-bg.setBlockSize(500);
+bg.setBlockSize(200);
 bg.addElement(img1);
 bg.addElement(img2);
 bg.addElement(img3);
