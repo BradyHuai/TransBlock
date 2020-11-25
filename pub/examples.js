@@ -29,3 +29,4 @@ bg.addElement(img3);
 bg.generateButtons();
 bg.generate();
 bg.start();
+bg.activate();

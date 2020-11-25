@@ -82,6 +82,16 @@ function BlockGenerator() {
     this.elements = [];
     this.timing = 4;
     this.counter = 0;
+
+    this.activate = function() {
+        setInterval(() => {
+            if (this.counter >= this.elements.length) return;
+            this.itemList.style.transition = "transform 0.5s ease-in-out";
+            this.counter++;
+            this.itemList.style.transform = "translateX(" + (-this.width * this.counter) + "px)";
+        }, this.timing * 1000);
+    }
+
 }
 
 BlockGenerator.prototype = {
