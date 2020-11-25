@@ -1,65 +1,7 @@
 "use strict";
 const log = console.log
 log('----------')
-log('SCRIPT: Creating and loading our JS libraries')
-
-// function BlockGenerator() {
-//     this.block = document.createElement('div');
-//     this.block.style = 'width: 60px; height: 60px;';
-//     const body = $('body')
-// 	body.append(this.block)
-//     this.elements = [];
-//     this.timing = 4;
-    
-//     this.start = function() {
-
-//         let next = 0;
-//         setInterval(() => {
-//             if (this.block.childElementCount != 0){
-//                 this.elements[next-1].style.clipPath = "circle(0% at center)";
-//                 this.block.removeChild(this.elements[next-1]);
-//             }
-//             else{
-//                 if (next >= this.elements.length) {
-//                     next = 0;
-//                     this.elements.map((item) => item.classList.remove("active"));
-//                     this.block.appendChild(this.elements[next]);
-//                 } else {
-//                     this.elements[next].style.clipPath = "circle(100% at center)";
-//                     this.block.appendChild(this.elements[next]);
-//                 }
-//             }
-            
-//             next++;
-//         }, this.timing * 1000);
-//     }
-// }
-
-// BlockGenerator.prototype = {
-//     setBlockSize: function(size){
-//         this.block.style.width = size.toString() + "px";
-//         this.block.style.height = size.toString() + "px";
-//     },
-
-//     addElement: function(ele) {
-//         this.elements.push(ele);
-//         ele.style.position = "relative";
-//         ele.style.top = 0;
-//         ele.style.width = "100%";
-//         ele.style.height = "100%";
-//         ele.style.border = "1px solid";
-//         ele.style.transition = "clipPath 1.5s ease";
-//     },
-
-//     removeElement: function(i) {
-//         this.elements.slice(i, i+1);
-//     },
-
-//     setTiming: function(time) {
-//         this.timing = time;
-//     },
-
-// }
+log('SCRIPT: Creating and loading JS library')
 
 function BlockGenerator() {
     this.block = document.createElement('div');
@@ -82,16 +24,6 @@ function BlockGenerator() {
     this.elements = [];
     this.timing = 4;
     this.counter = 0;
-
-    this.activate = function() {
-        setInterval(() => {
-            if (this.counter >= this.elements.length) return;
-            this.itemList.style.transition = "transform 0.5s ease-in-out";
-            this.counter++;
-            this.itemList.style.transform = "translateX(" + (-this.width * this.counter) + "px)";
-        }, this.timing * 1000);
-    }
-
 }
 
 BlockGenerator.prototype = {
@@ -113,6 +45,14 @@ BlockGenerator.prototype = {
         })
 
         this.block.style.width = w + "px";
+    },
+
+    removeElement: function(i) {
+        this.elements.slice(i, i+1);
+    },
+
+    setTiming: function(time) {
+        this.timing = time;
     },
 
     generate: function() {
@@ -142,8 +82,7 @@ BlockGenerator.prototype = {
         })
     },
 
-    start: function() {
-        // this.itemList.style.transform = "translateX(" + (-this.width * this.counter) + "px)";
+    activateRightSwipe: function() {
         this.itemList.addEventListener("transitionend", () => {
             if (this.counter === this.elements.length){
                 this.itemList.style.transition = "none";
@@ -156,5 +95,64 @@ BlockGenerator.prototype = {
                 this.itemList.style.transform = "translateX(" + (-this.width * this.counter) + "px)";
             }
         });
+
+        setInterval(() => {
+            if (this.counter >= this.elements.length) return;
+            this.itemList.style.transition = "transform 0.5s ease-in-out";
+            this.counter++;
+            this.itemList.style.transform = "translateX(" + (-this.width * this.counter) + "px)";
+        }, this.timing * 1000);
+    },
+
+    generateButtons2: function() {
+        this.leftButton.appendChild(document.createTextNode('previous'));
+        this.rightButton.appendChild(document.createTextNode('next'));
+        this.block.appendChild(this.leftButton);
+        this.block.appendChild(this.rightButton);
+
+        this.rightButton.addEventListener("click", ()=> {
+            if (this.itemList.childElementCount != 0){
+                this.itemList.removeChild(this.elements[this.counter-1]);
+            }
+            if (this.counter >= this.elements.length) {
+                this.counter = 0;
+                this.itemList.appendChild(this.elements[this.counter]);
+            } else {
+                this.itemList.appendChild(this.elements[this.counter]);
+            }
+            this.counter++;
+        })
+
+        this.leftButton.addEventListener("click", ()=> {
+            if (this.itemList.childElementCount != 0){
+                this.itemList.removeChild(this.elements[this.counter-1]);
+            }
+            this.counter -= 2;
+            if (this.counter < 0) {
+                this.counter = this.elements.length - 1;
+                this.itemList.appendChild(this.elements[this.counter]);
+            } else {
+                this.itemList.appendChild(this.elements[this.counter]);
+            }
+            this.counter++;
+        })
+    },
+
+    activateNoAnimation: function() {
+        this.itemList.appendChild(this.elements[0]);
+        this.counter++;
+
+        setInterval(() => {
+            if (this.itemList.childElementCount != 0){
+                this.itemList.removeChild(this.elements[this.counter-1]);
+            }
+            if (this.counter >= this.elements.length) {
+                this.counter = 0;
+                this.itemList.appendChild(this.elements[this.counter]);
+            } else {
+                this.itemList.appendChild(this.elements[this.counter]);
+            }
+            this.counter++;
+        }, this.timing * 1000);
     },
 }
