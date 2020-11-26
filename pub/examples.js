@@ -3,15 +3,15 @@ log('----------')
 log('SCRIPT: Examples of using our libraries')
 
 var img1 = document.createElement("IMG");
-img1.src = "../assets/img1.png";
+img1.src = "./assets/img1.png";
 img1.alt = "";
 
 var img2 = document.createElement("IMG");
-img2.src = "../assets/img2.png";
+img2.src = "./assets/img2.png";
 img2.alt = "";
 
 var img3 = document.createElement("IMG");
-img3.src = "../assets/img3.png";
+img3.src = "./assets/img3.png";
 img3.alt = "";
 
 var text1 = document.createElement("p");
@@ -27,15 +27,15 @@ bg.generateButtons();
 bg.activateNoAnimation();
 
 var img4 = document.createElement("IMG");
-img4.src = "../assets/img1.png";
+img4.src = "./assets/img1.png";
 img4.alt = "";
 
 var img5 = document.createElement("IMG");
-img5.src = "../assets/img2.png";
+img5.src = "./assets/img2.png";
 img5.alt = "";
 
 var img6 = document.createElement("IMG");
-img6.src = "../assets/img3.png";
+img6.src = "./assets/img3.png";
 img6.alt = "";
 
 var text2 = document.createElement("p");
@@ -51,15 +51,15 @@ bg2.generateButtons2();
 bg2.activateRightSwipe();
 
 var img7 = document.createElement("IMG");
-img7.src = "../assets/img1.png";
+img7.src = "./assets/img1.png";
 img7.alt = "";
 
 var img8 = document.createElement("IMG");
-img8.src = "../assets/img2.png";
+img8.src = "./assets/img2.png";
 img8.alt = "";
 
 var img9 = document.createElement("IMG");
-img9.src = "../assets/img3.png";
+img9.src = "./assets/img3.png";
 img9.alt = "";
 
 var text3 = document.createElement("p");
