@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/csc309-fall-2020/js-library-huaiguo/issues"
   },
-  "homepage": "https://github.com/csc309-fall-2020/js-library-huaiguo#readme"
+  "homepage": "https://github.com/csc309-fall-2020/js-library-huaiguo#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
