@@ -24,6 +24,7 @@ body {
 
 .item{
     margin: 0;
+    overflow: auto;
 }
 
 #l-button{
