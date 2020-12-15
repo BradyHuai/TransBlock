@@ -26,11 +26,16 @@ function BlockGenerator() {
     this.counter = 0;
 
     this.hovered_flag = false;
-    $(".block-container").hover(function(e){
+    this.block.onmouseover = function() {mouseOver()};
+    this.block.onmouseout = function() {mouseOut()};
+
+    var mouseOver = () => {
         this.hovered_flag = true;
-    },function(e){
+    }
+      
+    var mouseOut = () => {
         this.hovered_flag = false;
-    });
+    }
 }
 
 
@@ -220,9 +225,10 @@ BlockGenerator.prototype = {
 
         let next = 0;
         setInterval(() => {
+            console.log(this.hovered_flag)
             if (this.hovered_flag) {
-                console.log("hover")
-            };
+                return;
+            }
                 if (next != 0){
                     this.elements[next-1].style.transition = "clip-path 0.5s ease";
                     this.elements[next-1].style.clipPath = "circle(0% at center)"
