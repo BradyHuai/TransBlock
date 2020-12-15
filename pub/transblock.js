@@ -24,7 +24,15 @@ function BlockGenerator() {
     this.elements = [];
     this.timing = 4;
     this.counter = 0;
+
+    this.hovered_flag = false;
+    $(".block-container").hover(function(e){
+        this.hovered_flag = true;
+    },function(e){
+        this.hovered_flag = false;
+    });
 }
+
 
 BlockGenerator.prototype = {
     addElement: function(ele) {
@@ -203,4 +211,33 @@ BlockGenerator.prototype = {
             this.itemList.style.transform = "translateY(" + (-this.height * this.counter) + "px)";
         }, this.timing * 1000);
     },
+
+    activateCircle: function() {
+        this.elements.map((element) => {
+            element.style.position = "absolute";
+            element.style.clipPath = "circle(0% at center)";
+        })
+
+        let next = 0;
+        setInterval(() => {
+            if (this.hovered_flag) {
+                console.log("hover")
+            };
+                if (next != 0){
+                    this.elements[next-1].style.transition = "clip-path 0.5s ease";
+                    this.elements[next-1].style.clipPath = "circle(0% at center)"
+                }
+                if (next >= this.elements.length){
+                    next = 0;
+                    this.elements[next].style.transition = "clip-path 2.5s ease";
+                    this.elements[next].style.clipPath = "circle(100% at center)";
+                    next++;
+                }
+                else {
+                    this.elements[next].style.transition = "clip-path 2.5s ease";
+                    this.elements[next].style.clipPath = "circle(100% at center)";
+                    next++;
+                }
+        }, this.timing * 1000);
+    }
 }

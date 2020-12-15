@@ -48,3 +48,7 @@ body {
     opacity: 0.7;
     cursor: pointer;
 }
+
+.active {
+    clip-path: circle(100% at center);
+}
