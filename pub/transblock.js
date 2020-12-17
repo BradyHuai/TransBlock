@@ -245,5 +245,34 @@ BlockGenerator.prototype = {
                     next++;
                 }
         }, this.timing * 1000);
-    }
+    },
+
+    activateFade: function() {
+        this.elements.map((element) => {
+            element.style.position = "absolute";
+            element.style.opacity = 0;
+        })
+
+        let next = 0;
+        setInterval(() => {
+            if (this.hovered_flag) {
+                return;
+            }
+                if (next != 0){
+                    this.elements[next-1].style.transition = "opacity 2s ease";
+                    this.elements[next-1].style.opacity = 0;
+                }
+                if (next >= this.elements.length){
+                    next = 0;
+                    this.elements[next].style.transition = "opacity 2s ease";
+                    this.elements[next].style.opacity = 1;
+                    next++;
+                }
+                else {
+                    this.elements[next].style.transition = "opacity 2s ease";
+                    this.elements[next].style.opacity = 1;
+                    next++;
+                }
+        }, this.timing * 1000);
+    },
 }

@@ -147,4 +147,4 @@ bg.addElement(img3);
 bg.addElement(img1);
 bg.addElement(img2);
 bg.generate();
-bg.activateCircle();
+bg.activateFade();
