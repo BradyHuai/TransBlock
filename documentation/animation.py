@@ -1,6 +1,7 @@
 """
-TransBlock properties
+Create Block Instance
 -------------------------
+To create an instance of TransBlock
 
 """
 

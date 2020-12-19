@@ -7,26 +7,17 @@ Welcome to TransBlock's documentation!
 ======================================
 
 =======
-标题
+Create TransBlock Instance
 =======
-标题以“==”和“--”来定义，遵从下原则：
-    * 双线比单线级别高
-    * 上下线比单下线级别高
 
-======
-段落
-======
+To create a TransBlock Instance, use the new BlockGenerator() function
 
-    段落一
+>> const blockInstance = new BlockGenerator();
 
-    段落二
 
 
 .. automodule:: ex
   :members:
-
-
-
 
 
 .. toctree::
