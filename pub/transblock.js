@@ -1,8 +1,7 @@
 "use strict";
-const log = console.log
-log('----------')
-log('SCRIPT: Creating and loading JS library')
 
+
+(function(global, document, $) {
 function BlockGenerator() {
     // The block container
     this.block = document.createElement('div');
@@ -16,11 +15,14 @@ function BlockGenerator() {
     this.block.appendChild(this.itemList);
 
     // The left button (previous item)
-    this.buttonPrevious = document.createElement('button');
+    this.buttonPrevious = document.createElement('i');
     this.buttonPrevious.id = "l-button";
     // The right button (next item)
-    this.buttonNext = document.createElement('button');
+    this.buttonNext = document.createElement('i');
     this.buttonNext.id = "r-button";
+
+    this.buttonPrevious.className = "fas fa-arrow-left";
+    this.buttonNext.className = "fas fa-arrow-right";
 
     // Default settings
     this.width = 800;
@@ -85,9 +87,9 @@ BlockGenerator.prototype = {
     },
 
     // Set button icons
-    setButton: function(previousText, nextText) {
-        this.buttonPrevious.appendChild(document.createTextNode(previousText));
-        this.buttonNext.appendChild(document.createTextNode(nextText));
+    setButton: function(previous, next) {
+        this.buttonPrevious = previous;
+        this.buttonNext = next;
     },
 
     // Helper function to position buttons
@@ -111,7 +113,9 @@ BlockGenerator.prototype = {
     // Generate previous and next buttons
     generateButtons: function() {
         this.block.appendChild(this.buttonPrevious);
+        this.buttonPrevious.id = "l-button";
         this.block.appendChild(this.buttonNext);
+        this.buttonNext.id = "r-button";
     },
 
     // Helper function to generate all elements
@@ -150,12 +154,10 @@ BlockGenerator.prototype = {
         const handleNext = (() => {
             if (this.hovered_flag) return;
             if (this.counter > 0){
-                // this.itemList.removeChild(this.elements[this.counter-1]);
                 this.elements[this.counter-1].style.opacity = 0;
             }
             if (this.counter >= this.elements.length) {
                 this.counter = 0;
-                // this.itemList.appendChild(this.elements[this.counter]);
             }
             this.elements[this.counter].style.opacity = 1;
             this.counter++;
@@ -253,6 +255,9 @@ BlockGenerator.prototype = {
     activateUpSwipe: function() {
         // Set button position
         this.setButtonPosition(true);
+
+        this.buttonPrevious.className = "fas fa-arrow-up";
+        this.buttonNext.className = "fas fa-arrow-down";
 
         // Generate all elements in element list
         this.generate();
@@ -470,9 +475,9 @@ BlockGenerator.prototype = {
                     div.style.height = this.height + "px";
                     div.style.backgroundImage = "url(" + element.src + ")";
                     div.style.backgroundPosition = "-" + width;
-                    div.style.backgroundSize = this.width + "px";
+                    div.style.backgroundSize = this.width + "px 100%";
                     div.style.transitionDelay = x * delay + "s";
-                    div.style.backgroundSize = "cover";
+                    // div.style.backgroundSize = "cover";
                 }
 
                 this.itemList.appendChild(container);
@@ -532,6 +537,8 @@ BlockGenerator.prototype = {
     activateYSlice: function() {
         // Set button position
         this.setButtonPosition(true);
+        this.buttonPrevious.className = "fas fa-arrow-up";
+        this.buttonNext.className = "fas fa-arrow-down";
 
         // Divition of the X
         const gridY = 4;
@@ -617,3 +624,6 @@ BlockGenerator.prototype = {
         })
     },
 }
+
+global.BlockGenerator = global.BlockGenerator || BlockGenerator;
+})(window, window.document, $);
