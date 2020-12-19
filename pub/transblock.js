@@ -66,9 +66,12 @@ BlockGenerator.prototype = {
         this.elements.map((element) => {
             element.style.minWidth = w + "px";
             element.style.minHeight = h + "px";
+            element.style.width = w + "px";
+            element.style.height = h + "px";
         })
 
         this.block.style.width = w + "px";
+        this.block.style.height = h + "px";
     },
 
     // Remove element from element list
@@ -438,7 +441,7 @@ BlockGenerator.prototype = {
         })
     },
 
-    activateSlice: function() {
+    activateXSlice: function() {
         // Set button position
         this.setButtonPosition(false);
 
@@ -451,7 +454,7 @@ BlockGenerator.prototype = {
             if (element.nodeName == "IMG"){
                 // Container for each image as a whole
                 const container = document.createElement("div");
-                container.classList.add("slice")
+                container.classList.add("x-slice")
                 container.style.width = this.width;
                 container.style.height = this.height;
 
@@ -470,6 +473,94 @@ BlockGenerator.prototype = {
                     div.style.backgroundSize = this.width + "px";
                     div.style.transitionDelay = x * delay + "s";
                     div.style.backgroundSize = "cover";
+                }
+
+                this.itemList.appendChild(container);
+            }
+        })
+
+        this.itemList.children[this.counter].classList.add("active");
+        this.counter++;
+
+        // Handle animation for next element on display
+        const handleNext = (() => {
+            if (this.hovered_flag) return;
+
+            if (this.counter != 0){
+                this.itemList.children[this.counter-1].classList.remove("active");
+            }
+            if (this.counter >= this.elements.length) {
+                this.counter = 0;
+            }
+            this.itemList.children[this.counter].classList.add("active");
+            this.counter++;
+        });
+
+        // Run iteration
+        var run = setInterval(handleNext, this.timing * 1000);
+
+        // Handle next button event
+        this.buttonNext.addEventListener("click", ()=> {
+            if (this.itemList.childElementCount != 0){
+                this.itemList.children[this.counter-1].classList.remove("active");
+            }
+            if (this.counter >= this.elements.length) {
+                this.counter = 0;
+            }
+            this.itemList.children[this.counter].classList.add("active");
+            this.counter++
+            clearInterval(run);
+            run = setInterval(handleNext, this.timing * 1000);
+        })
+
+        // Handle previous button event
+        this.buttonPrevious.addEventListener("click", ()=> {
+            if (this.itemList.childElementCount != 0){
+                this.itemList.children[this.counter-1].classList.remove("active");
+            }
+            this.counter -= 2;
+            if (this.counter < 0) {
+                this.counter = this.elements.length - 1;
+            }
+            this.itemList.children[this.counter].classList.add("active");
+            this.counter++;
+            clearInterval(run);
+            run = setInterval(handleNext, this.timing * 1000);
+        })
+    },
+
+    activateYSlice: function() {
+        // Set button position
+        this.setButtonPosition(true);
+
+        // Divition of the X
+        const gridY = 4;
+        // Delay for each component
+        const delay = 0.05;
+
+        this.elements.map((element) => {
+            if (element.nodeName == "IMG"){
+                // Container for each image as a whole
+                const container = document.createElement("div");
+                container.classList.add("y-slice")
+                container.style.width = this.width;
+                container.style.height = this.height;
+
+                // Divide image into a gridX parts
+                for(let y = 0; y < gridY; y++){
+                    var height = y * this.height / gridY + "px";
+                    var div = document.createElement("div");
+                    container.appendChild(div);
+        
+                    div.style.top = height;
+                    div.style.left = 0;
+                    div.style.height = this.height / gridY + "px";
+                    div.style.width = this.width + "px";
+
+                    div.style.backgroundImage = "url(" + element.src + ")";
+                    div.style.backgroundPosition = "center -" + height;
+                    div.style.transitionDelay = y * delay + "s";
+                    div.style.backgroundSize = "100% " + this.height + "px";
                 }
 
                 this.itemList.appendChild(container);

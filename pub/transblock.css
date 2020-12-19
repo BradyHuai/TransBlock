@@ -60,18 +60,17 @@ body {
     opacity: 0.5;
 }
 
-.slice {
+.x-slice {
     position: relative;
     background-color: blanchedalmond;
 }
 
-.slice img {
+.x-slice img {
 	opacity: 0;
 }
 
-.slice div {
+.x-slice div {
     position: absolute;
-    /* z-index: 1; */
     background-repeat: no-repeat;
     transform: rotateY(-50deg) scale(0.5);
     transition: all 0.6s cubic-bezier(0.445, 0.05, 0.55, 0.95);
@@ -79,13 +78,32 @@ body {
     opacity: 0;
 }
 
-.slice.active div {
+.x-slice.active div {
     opacity: 1;
     transform: rotateY(0deg) translateY(0);
     transition-delay: 0.5s;
 }
 
-.clip1 {
-	position: absolute;
+.y-slice {
+    position: relative;
+    background-color: blanchedalmond;
+}
 
+.y-slice img {
+	opacity: 0;
+}
+
+.y-slice div {
+    position: absolute;
+    background-repeat: no-repeat;
+    transform: rotateX(-50deg) scale(0.5);
+    transition: all 0.6s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+    transform-origin: bottom;
+    opacity: 0;
+}
+
+.y-slice.active div {
+    opacity: 1;
+    transform: rotateX(0deg) translateX(0);
+    transition-delay: 0.5s;
 }

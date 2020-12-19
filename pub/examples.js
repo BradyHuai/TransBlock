@@ -196,4 +196,27 @@ bg6.addElement(img15);
 bg6.addElement(img16);
 bg6.generateButtons();
 bg6.setButton("<<", ">>");
-bg6.activateSlice();
+bg6.activateXSlice();
+
+
+
+// sliceY
+var img18 = document.createElement("IMG");
+img18.src = "./assets/img1.jpg";
+img18.alt = "";
+
+var img19 = document.createElement("IMG");
+img19.src = "./assets/img2.jpg";
+img19.alt = "";
+
+var img20 = document.createElement("IMG");
+img20.src = "./assets/img3.jpg";
+img20.alt = "";
+
+const bg7 = new BlockGenerator()
+bg7.addElement(img20);
+bg7.addElement(img18);
+bg7.addElement(img19);
+bg7.generateButtons();
+bg7.setButton("^", "v");
+bg7.activateYSlice();
