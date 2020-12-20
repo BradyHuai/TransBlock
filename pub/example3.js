@@ -1,20 +1,18 @@
 function example3() {
     const header1 = document.createElement('h1');
-    header1.style.fontFamily = "fantasy";
+    header1.style.fontFamily = "Times New Roman";
     header1.innerText = "All available animations"
     const body = $('body');
     body.append(header1);
 
-    const source = document.createElement('a');
-    source.href = "examples3.js";
-    source.innerText = "Source code";
-    body.append(source)
-
-
     // no Animation
     const subtitle1 = document.createElement('h3');
     subtitle1.innerText = "No animation"
-    subtitle1.style.fontFamily = "fantasy";
+    subtitle1.style.fontFamily = "Times New Roman";
+
+    subtitle1.style.display = "flex"
+    subtitle1.style.justifyContent = "center"
+    subtitle1.style.alignItems = "center"
     body.append(subtitle1);
 
     var img5 = document.createElement("IMG");
@@ -45,7 +43,10 @@ function example3() {
     // right swipe
     const subtitle2 = document.createElement('h3');
     subtitle2.innerText = "Right swipe animation"
-    subtitle2.style.fontFamily = "fantasy";
+    subtitle2.style.fontFamily = "Times New Roman";
+    subtitle2.style.display = "flex"
+    subtitle2.style.justifyContent = "center"
+    subtitle2.style.alignItems = "center"
     body.append(subtitle2);
 
     var img9 = document.createElement("IMG");
@@ -76,7 +77,10 @@ function example3() {
     // up swipe
     const subtitle3 = document.createElement('h3');
     subtitle3.innerText = "Up swipe animation"
-    subtitle3.style.fontFamily = "fantasy";
+    subtitle3.style.fontFamily = "Times New Roman";
+    subtitle3.style.display = "flex"
+    subtitle3.style.justifyContent = "center"
+    subtitle3.style.alignItems = "center"
     body.append(subtitle3);
 
     var img13 = document.createElement("IMG");
@@ -109,7 +113,10 @@ function example3() {
     // fade
     const subtitle4 = document.createElement('h3');
     subtitle4.innerText = "Fade animation"
-    subtitle4.style.fontFamily = "fantasy";
+    subtitle4.style.fontFamily = "Times New Roman";
+    subtitle4.style.display = "flex"
+    subtitle4.style.justifyContent = "center"
+    subtitle4.style.alignItems = "center"
     body.append(subtitle4);
 
     var img17 = document.createElement("IMG");
@@ -141,7 +148,10 @@ function example3() {
     // circle
     const subtitle5 = document.createElement('h3');
     subtitle5.innerText = "Circle animation"
-    subtitle5.style.fontFamily = "fantasy";
+    subtitle5.style.fontFamily = "Times New Roman";
+    subtitle5.style.display = "flex"
+    subtitle5.style.justifyContent = "center"
+    subtitle5.style.alignItems = "center"
     body.append(subtitle5);
 
     var img21 = document.createElement("IMG");
@@ -173,7 +183,10 @@ function example3() {
     // x-slice
     const subtitle6 = document.createElement('h3');
     subtitle6.innerText = "Vertial slice animation"
-    subtitle6.style.fontFamily = "fantasy";
+    subtitle6.style.fontFamily = "Times New Roman";
+    subtitle6.style.display = "flex"
+    subtitle6.style.justifyContent = "center"
+    subtitle6.style.alignItems = "center"
     body.append(subtitle6);
 
     var img25 = document.createElement("IMG");
@@ -205,7 +218,10 @@ function example3() {
     // y-slice
     const subtitle7 = document.createElement('h3');
     subtitle7.innerText = "Horizontal slice animation"
-    subtitle7.style.fontFamily = "fantasy";
+    subtitle7.style.fontFamily = "Times New Roman";
+    subtitle7.style.display = "flex"
+    subtitle7.style.justifyContent = "center"
+    subtitle7.style.alignItems = "center"
     body.append(subtitle7);
 
     var img29 = document.createElement("IMG");

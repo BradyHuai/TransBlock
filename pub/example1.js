@@ -1,7 +1,7 @@
 function example1(){
     const body = $('body');
     const ex1title = document.createElement('h2');
-    ex1title.style.fontFamily = "fantasy"
+    ex1title.style.fontFamily = "Times New Roman"
     ex1title.innerText = "TransBlock can be used to display announcements and advertisements for the home page of websites. (headers or side bars as displayed)"
     body.append(ex1title);
 
