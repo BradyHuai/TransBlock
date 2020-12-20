@@ -2,10 +2,11 @@
 
 
 (function(global, document, $) {
-function BlockGenerator() {
+function BlockGenerator(id) {
     // The block container
     this.block = document.createElement('div');
     this.block.className = "block-container";
+    this.block.id = id;
     const body = $('body');
     body.append(this.block);
     
