@@ -5,7 +5,8 @@
 https://transblock.herokuapp.com
 
 # Getting Started:
-Simply import the following line to your html head
+1. Download the library package to your app folder
+2. Simply import the following line to your html head
 
 `<link rel="stylesheet" type="text/css" href="transblock.css">`
 
